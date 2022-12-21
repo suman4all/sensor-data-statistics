@@ -27,6 +27,7 @@ object Main extends App{
   //Fetching Environment Variables
   private val inputDirectory = Paths.get(Config().getString("env.input-directory")).toFile
   private val linesToSkip = Config().getInt("env.linesToSkip")
+  private val awaitTimeInSeconds = Config().getInt("env.awaitTimeInSeconds")
 
 /* Required for Balancer
   private val concurrentFilesRead = Config().getInt("env.concurrentFilesRead")
@@ -80,16 +81,16 @@ object Main extends App{
 
 
 
-    val fileValidMeasureCount =  Await.result(validRowCount, 5 seconds)
+    val fileValidMeasureCount =  Await.result(validRowCount, awaitTimeInSeconds seconds)
     validMeasureCount = validMeasureCount + fileValidMeasureCount
 
-    val fileFailedMeasureCount =  Await.result(corruptedRowCount, 5 seconds)
+    val fileFailedMeasureCount =  Await.result(corruptedRowCount, awaitTimeInSeconds seconds)
     failedMeasureCount = failedMeasureCount + fileFailedMeasureCount
 
-    val file_sd_valid_list =  Await.result(validRowData, 5 seconds)
+    val file_sd_valid_list =  Await.result(validRowData, awaitTimeInSeconds seconds)
     sd_valid_list = List.concat(sd_valid_list,file_sd_valid_list)
 
-    val file_sd_corrupted_list =  Await.result(corruptedRowData, 5 seconds)
+    val file_sd_corrupted_list =  Await.result(corruptedRowData, awaitTimeInSeconds seconds)
     sd_corrupted_list = List.concat(sd_corrupted_list,file_sd_corrupted_list )
 
   }
