@@ -21,3 +21,5 @@ libraryDependencies += "com.lightbend.akka" %% "akka-stream-alpakka-csv" % "0.18
 libraryDependencies += "com.lightbend.akka" %% "akka-stream-alpakka-file" % "2.0.0"
 libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.7.2"
 libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.0" % "test"
+libraryDependencies += "com.typesafe.akka" %% "akka-stream-testkit" % "2.5.31" % "test"
